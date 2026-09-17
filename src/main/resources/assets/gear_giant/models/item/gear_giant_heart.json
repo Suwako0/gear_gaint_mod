@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gear_giant:item/gear_giant_heart"
+  }
+}

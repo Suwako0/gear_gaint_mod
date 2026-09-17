@@ -1,0 +1,10 @@
+{
+  "music.gear_giant_battle": {
+    "sounds": [
+      {
+        "name": "gear_giant:music/gear_giant_battle",
+        "stream": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "gear_giant:gear_giant_heart" }
+      ],
+      "functions": [
+        { "function": "minecraft:set_count", "count": 1, "add": false }
+      ]
+    },
+    {
+      "rolls": { "type": "minecraft:uniform", "min": 2.0, "max": 4.0 },
+      "entries": [
+        { "type": "minecraft:item", "name": "create:andesite_alloy", "weight": 4 },
+        { "type": "minecraft:item", "name": "create:cogwheel", "weight": 3 },
+        { "type": "minecraft:item", "name": "create:large_cogwheel", "weight": 2 },
+        { "type": "minecraft:item", "name": "create:electron_tube", "weight": 1 }
+      ],
+      "functions": [
+        {
+          "function": "minecraft:set_count",
+          "count": { "type": "minecraft:uniform", "min": 1.0, "max": 3.0 },
+          "add": false
+        }
+      ],
+      "conditions": [
+        { "condition": "minecraft:killed_by_player" }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "create:precision_mechanism", "weight": 3 },
+        { "type": "minecraft:item", "name": "create:polished_rose_quartz", "weight": 1 }
+      ],
+      "conditions": [
+        { "condition": "minecraft:killed_by_player" },
+        {
+          "condition": "minecraft:random_chance_with_enchanted_bonus",
+          "unenchanted_chance": 0.45,
+          "enchanted_chance": {
+            "type": "minecraft:linear",
+            "base": 0.65,
+            "per_level_above_first": 0.1
+          },
+          "enchantment": "minecraft:looting"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "create:brass_casing" }
+      ],
+      "functions": [
+        {
+          "function": "minecraft:enchanted_count_increase",
+          "enchantment": "minecraft:looting",
+          "count": { "type": "minecraft:uniform", "min": 0.0, "max": 2.0 }
+        }
+      ],
+      "conditions": [
+        { "condition": "minecraft:killed_by_player" },
+        { "condition": "minecraft:random_chance", "chance": 0.5 }
+      ]
+    }
+  ],
+  "random_sequence": "gear_giant:entities/gear_giant"
+}

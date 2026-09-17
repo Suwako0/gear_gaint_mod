@@ -1,0 +1,22 @@
+{
+  "parent": "gear_giant:gear_giant/placed_core",
+  "criteria": {
+    "kill": {
+      "trigger": "minecraft:player_kills_entity",
+      "conditions": {
+        "entity": { "type": "gear_giant:gear_giant" }
+      }
+    }
+  },
+  "display": {
+    "icon": { "id": "gear_giant:gear_giant_heart" },
+    "title": { "translate": "advancement.gear_giant.slay.name" },
+    "description": { "translate": "advancement.gear_giant.slay.desc" },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "rewards": {
+    "experience": 500
+  }
+}

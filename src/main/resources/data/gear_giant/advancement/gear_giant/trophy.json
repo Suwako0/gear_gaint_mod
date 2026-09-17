@@ -1,0 +1,23 @@
+{
+  "parent": "gear_giant:gear_giant/slay_giant",
+  "criteria": {
+    "trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["gear_giant:gear_trophy"]
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": { "id": "gear_giant:gear_trophy" },
+    "title": { "translate": "advancement.gear_giant.trophy.name" },
+    "description": { "translate": "advancement.gear_giant.trophy.desc" },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  }
+}

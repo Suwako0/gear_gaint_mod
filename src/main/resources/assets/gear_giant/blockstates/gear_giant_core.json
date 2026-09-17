@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "charging=false": { "model": "gear_giant:block/gear_giant_core" },
+    "charging=true": { "model": "gear_giant:block/gear_giant_core" }
+  }
+}

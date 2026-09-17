@@ -1,0 +1,23 @@
+{
+  "criteria": {
+    "place": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "location": {
+          "block": {
+            "blocks": ["gear_giant:gear_giant_core"]
+          }
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": { "id": "gear_giant:gear_giant_core" },
+    "title": { "translate": "advancement.gear_giant.placed_core.name" },
+    "description": { "translate": "advancement.gear_giant.placed_core.desc" },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "background": "minecraft:textures/block/iron_block.png"
+  }
+}

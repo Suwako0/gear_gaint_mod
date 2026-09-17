@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "decorations",
+  "pattern": [
+    " h ",
+    " g ",
+    "sss"
+  ],
+  "key": {
+    "h": { "item": "gear_giant:gear_giant_heart" },
+    "g": { "item": "create:andesite_alloy" },
+    "s": { "item": "minecraft:polished_deepslate" }
+  },
+  "result": { "count": 1, "id": "gear_giant:gear_trophy" }
+}

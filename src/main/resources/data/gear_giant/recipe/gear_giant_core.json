@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "cac",
+    "dbd",
+    "eee"
+  ],
+  "key": {
+    "a": { "item": "create:electron_tube" },
+    "b": { "item": "create:large_cogwheel" },
+    "c": { "item": "create:cogwheel" },
+    "d": { "item": "create:precision_mechanism" },
+    "e": { "item": "create:brass_casing" }
+  },
+  "result": { "count": 1, "id": "gear_giant:gear_giant_core" }
+}

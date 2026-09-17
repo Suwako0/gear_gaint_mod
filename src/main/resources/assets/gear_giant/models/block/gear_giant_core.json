@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "gear_giant:block/gear_giant_core_top",
+    "side": "gear_giant:block/gear_giant_core_side"
+  }
+}
