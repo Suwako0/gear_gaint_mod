@@ -1,6 +1,7 @@
 package cn.blockforge.generated.geargiant1211ngear;
 
 import cn.blockforge.generated.geargiant1211ngear.client.BossMusicHandler;
+import cn.blockforge.generated.geargiant1211ngear.client.MechanicalHookHud;
 import cn.blockforge.generated.geargiant1211ngear.client.ModClientEvents;
 import cn.blockforge.generated.geargiant1211ngear.config.ModConfigs;
 import cn.blockforge.generated.geargiant1211ngear.entity.GearGiantEntity;
@@ -45,6 +46,8 @@ public final class GeneratedMod {
             modBus.addListener(ModClientEvents::registerAdditionalModels);
             modBus.addListener(ModClientEvents::registerScreens);
             NeoForge.EVENT_BUS.addListener(BossMusicHandler::onClientTick);
+            NeoForge.EVENT_BUS.addListener(MechanicalHookHud::onRenderGuiLayerPre);
+            NeoForge.EVENT_BUS.addListener(MechanicalHookHud::onRenderGuiPost);
         }
     }
 

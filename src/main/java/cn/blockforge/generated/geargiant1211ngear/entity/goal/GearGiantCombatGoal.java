@@ -649,8 +649,8 @@ public class GearGiantCombatGoal extends Goal {
                 }
             }
             case HOOK_WINDUP -> {
-                if (!validTarget(this.hookVictim)) {
-                    // 锁定的玩家中途暴毙：换最近的可钩玩家，换不到就收招
+                if (!withinHookLimit(this.hookVictim)) {
+                    // 锁定的玩家中途暴毙、或跑出 64 格硬上限：换最近的可钩玩家，换不到就收招
                     this.hookVictim = pickHookVictim(target);
                     if (this.hookVictim == null) {
                         endAttack(10);
@@ -752,9 +752,13 @@ public class GearGiantCombatGoal extends Goal {
 
     // ---------------------------------------------------------------- 机械钩爪
 
+    /** 钩爪索敌/追链的硬上限半径（格）：无论配置怎么填，巨人绝不勾 64 格外的玩家。 */
+    private static final double HOOK_MAX_RADIUS = 64.0;
+
     /**
      * 选定钩爪锁定对象：优先当前目标（若为活玩家且距离在配置区间附近），
      * 否则取区间内离巨人最近的生存玩家。找不到任何人时返回 null（不出手）。
+     * 索敌半径以 64 格硬上限封顶，防止配置被放大后无限远距离抓人。
      */
     private Player pickHookVictim(LivingEntity target) {
         if (!(this.giant.level() instanceof ServerLevel level)
@@ -762,14 +766,15 @@ public class GearGiantCombatGoal extends Goal {
             return null;
         }
         double min = cn.blockforge.generated.geargiant1211ngear.config.ModConfigs.GIANT_HOOK_MIN_DISTANCE.get();
-        double max = cn.blockforge.generated.geargiant1211ngear.config.ModConfigs.GIANT_HOOK_RANGE.get();
+        double max = Math.min(HOOK_MAX_RADIUS,
+                cn.blockforge.generated.geargiant1211ngear.config.ModConfigs.GIANT_HOOK_RANGE.get());
         if (target instanceof Player tp && hookCandidate(tp, min, max)) {
             return tp;
         }
         Player best = null;
         double bestDist = Double.MAX_VALUE;
         for (Player p : level.getEntitiesOfClass(Player.class,
-                this.giant.getBoundingBox().inflate(max + 8.0))) {
+                this.giant.getBoundingBox().inflate(max + 2.0))) {
             if (!hookCandidate(p, min, max)) {
                 continue;
             }
@@ -786,13 +791,19 @@ public class GearGiantCombatGoal extends Goal {
         if (!p.isAlive() || p.isRemoved() || p.isSpectator()) {
             return false;
         }
+        // 只留 2 格容差抵消选人瞬间的移动，硬上限 64 格绝不突破
         double d = this.giant.distanceTo(p);
-        return d >= min * 0.7 && d <= max + 6.0;
+        return d >= min * 0.7 && d <= Math.min(max + 2.0, HOOK_MAX_RADIUS);
+    }
+
+    /** 锁定对象是否仍在钩爪硬上限内（死亡/旁观/跑出 64 格都算丢锁）。 */
+    private boolean withinHookLimit(Player p) {
+        return validTarget(p) && !p.isSpectator() && this.giant.distanceTo(p) <= HOOK_MAX_RADIUS;
     }
 
     private void startHook() {
         Player victim = this.hookVictim;
-        if (victim == null || !victim.isAlive() || victim.isRemoved() || victim.isSpectator()) {
+        if (!withinHookLimit(victim)) {
             this.hookVictim = null;
             this.state = NONE;
             this.attackLock = 10;
@@ -818,8 +829,8 @@ public class GearGiantCombatGoal extends Goal {
         this.giant.playSound(SoundEvents.TRIDENT_THROW.value(), 1.5F, 0.55F);
         this.giant.playSound(SoundEvents.CHAIN_FALL, 1.0F, 1.5F);
         Player victim = this.hookVictim;
-        if (victim == null || !victim.isAlive() || victim.isRemoved() || victim.isSpectator()) {
-            // 蓄力期间锁定对象阵亡：临场换人，保证这一爪必有人被勾
+        if (!withinHookLimit(victim)) {
+            // 蓄力期间锁定对象阵亡或跑出 64 格：临场换人，保证这一爪必有人被勾（换不到就放空）
             victim = pickHookVictim(this.giant.getTarget());
         }
         this.hookVictim = victim;

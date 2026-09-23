@@ -51,8 +51,8 @@ public class HookClawEntity extends ThrowableProjectile {
     private static final int MAX_FLY_TICKS = 110;
     /** 拖拽硬上限：超过这个刻数无论到没到身边都强制甩摔。 */
     private static final int MAX_REEL_TICKS = 70;
-    /** 飞行中爪头与目标的极限距离（目标传送逃远则放弃）。 */
-    private static final double GIVEUP_DIST = 56.0;
+    /** 飞行中爪头与目标的极限距离：与战斗 goal 的 64 格硬上限一致，目标逃出去即回收。 */
+    private static final double GIVEUP_DIST = 64.0;
     /** 锁定判定的贴脸距离：走到这个范围内直接钉住，不依赖射线命中。 */
     private static final double LATCH_DIST = 1.35;
 

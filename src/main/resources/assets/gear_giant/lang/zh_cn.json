@@ -31,6 +31,11 @@
   "gear_giant.core.desc.header": "—— 召唤仪式 ——",
   "gear_giant.core.desc.1": "把核心放在地面，让它相邻的动力轴（转速 ≥16）持续转动",
   "gear_giant.core.desc.2": "充能约 10 秒后电火花聚顶，齿轮巨人从核心上方苏醒",
-  "gear_giant.core.desc.3": "召唤完成后核心会过载爆碎销毁",
-  "gear_giant.core.desc.4": "附近 96 格内已有齿轮巨人存活时，核心会保持待命不启动"
+  "gear_giant.core.desc.3": "召唤完成后核心会过载爆碎、直接消失，请多合成几座备用",
+  "gear_giant.core.desc.4": "附近 96 格内已有巨人存活时，核心会保持待命不启动",
+  "item.gear_giant.mechanical_hook": "机械化钩爪",
+  "entity.gear_giant.mechanical_hook_claw": "机械化钩爪",
+  "gear_giant.hook_tool.desc.1": "右键长按瞄准：准星对准 64 格内、视线无阻的生物即锁定",
+  "gear_giant.hook_tool.desc.2": "锁定时准星收拢变红，松开右键射出钩爪把目标拽到面前",
+  "gear_giant.hook_tool.desc.3": "未锁定时松手则空放一爪：爪头飞出后原路收回"
 }

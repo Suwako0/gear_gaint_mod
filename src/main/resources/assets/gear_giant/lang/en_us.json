@@ -32,5 +32,10 @@
   "gear_giant.core.desc.1": "Place the core on the ground and spin an adjacent Create shaft (>=16 RPM)",
   "gear_giant.core.desc.2": "After ~10s of charging, the Gear Giant awakens above the core",
   "gear_giant.core.desc.3": "The core shatters and is lost once the summon completes - craft spares",
-  "gear_giant.core.desc.4": "Stays dormant while a Gear Giant is already alive within 96 blocks"
+  "gear_giant.core.desc.4": "Stays dormant while a Gear Giant is already alive within 96 blocks",
+  "item.gear_giant.mechanical_hook": "Mechanized Hook Claw",
+  "entity.gear_giant.mechanical_hook_claw": "Mechanized Hook Claw",
+  "gear_giant.hook_tool.desc.1": "Hold right-click to aim: a mob within 64 blocks in view gets locked on",
+  "gear_giant.hook_tool.desc.2": "The reticle closes and turns red when locked; release to reel it to you",
+  "gear_giant.hook_tool.desc.3": "Release with nothing locked to fire a wild shot that simply retracts"
 }

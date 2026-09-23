@@ -32,6 +32,13 @@ public final class ModItems {
             "gear_giant_heart", Item::new,
             new Item.Properties().stacksTo(16).rarity(Rarity.EPIC).fireResistant());
 
+    /** 机械化钩爪：右键长按锁定 64 格内视线生物并把它拽到面前（与 BOSS 钩爪同款的爪头），耐久 325。 */
+    public static final DeferredItem<cn.blockforge.generated.geargiant1211ngear.item.MechanicalHookItem>
+            MECHANICAL_HOOK = ITEMS.register("mechanical_hook",
+            () -> new cn.blockforge.generated.geargiant1211ngear.item.MechanicalHookItem(
+                    new Item.Properties().stacksTo(1).rarity(Rarity.RARE).durability(
+                            cn.blockforge.generated.geargiant1211ngear.item.MechanicalHookItem.MAX_DAMAGE)));
+
     public static final net.neoforged.neoforge.registries.DeferredHolder<CreativeModeTab, CreativeModeTab> GEAR_GIANT_TAB =
             TABS.register("gear_giant", () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup." + GeneratedMod.MOD_ID + ".gear_giant"))
@@ -41,6 +48,7 @@ public final class ModItems {
                         output.accept(GEAR_TROPHY.get());
                         output.accept(GEAR_GIANT_HEART.get());
                         output.accept(BRASS_GEAR_CHEST.get());
+                        output.accept(MECHANICAL_HOOK.get());
                     })
                     .build());
 

@@ -6,7 +6,7 @@ modId="${mod_id}"
 version="${mod_version}"
 displayName="${mod_name}"
 authors="Suwako"
-description = "机械动力附属，齿轮巨人模组"
+description='''Gear Giant：依赖 Create（机械动力）的齿轮巨人 BOSS 模组。合成"齿轮巨人核心"祭台方块，向相邻动力轴输入旋转应力即可唤醒三阶段齿轮巨人；包含齿轮弹幕、旋转冲撞、应力护盾、仆从召唤、过载激光与暴走工厂终章，以及完整掉落与进度线。'''
 [[dependencies.${mod_id}]]
 modId="neoforge"
 type="required"

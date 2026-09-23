@@ -6,6 +6,7 @@ import cn.blockforge.generated.geargiant1211ngear.client.renderer.BrassGearChest
 import cn.blockforge.generated.geargiant1211ngear.client.renderer.GearGiantRenderer;
 import cn.blockforge.generated.geargiant1211ngear.client.renderer.GearlingRenderer;
 import cn.blockforge.generated.geargiant1211ngear.client.renderer.HookClawRenderer;
+import cn.blockforge.generated.geargiant1211ngear.client.renderer.MechanicalHookClawRenderer;
 import cn.blockforge.generated.geargiant1211ngear.client.screen.BrassGearChestScreen;
 import cn.blockforge.generated.geargiant1211ngear.registry.ModEntities;
 import cn.blockforge.generated.geargiant1211ngear.registry.ModMenus;
@@ -27,6 +28,7 @@ public final class ModClientEvents {
         event.registerEntityRenderer(ModEntities.GEAR_PROJECTILE.get(),
                 context -> new ThrownItemRenderer(context, 1.4F, false));
         event.registerEntityRenderer(ModEntities.HOOK_CLAW.get(), HookClawRenderer::new);
+        event.registerEntityRenderer(ModEntities.MECHANICAL_HOOK_CLAW.get(), MechanicalHookClawRenderer::new);
         // 黄铜齿轮箱：方块实体渲染器负责画出可开合的箱盖
         event.registerBlockEntityRenderer(ModEntities.BRASS_GEAR_CHEST.get(), BrassGearChestRenderer::new);
     }

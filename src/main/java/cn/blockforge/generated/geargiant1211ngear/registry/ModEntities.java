@@ -6,6 +6,7 @@ import cn.blockforge.generated.geargiant1211ngear.entity.GearGiantEntity;
 import cn.blockforge.generated.geargiant1211ngear.entity.GearProjectileEntity;
 import cn.blockforge.generated.geargiant1211ngear.entity.GearlingEntity;
 import cn.blockforge.generated.geargiant1211ngear.entity.HookClawEntity;
+import cn.blockforge.generated.geargiant1211ngear.entity.MechanicalHookClawEntity;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -58,6 +59,15 @@ public final class ModEntities {
                     .clientTrackingRange(8)
                     .updateInterval(1)
                     .build("hook_claw"));
+
+    /** 玩家工具"机械化钩爪"的爪头投射物（与 BOSS 钩爪同款外观）。 */
+    public static final DeferredHolder<EntityType<?>, EntityType<MechanicalHookClawEntity>> MECHANICAL_HOOK_CLAW =
+            ENTITY_TYPES.register("mechanical_hook_claw", () -> EntityType.Builder
+                    .<MechanicalHookClawEntity>of(MechanicalHookClawEntity::new, MobCategory.MISC)
+                    .sized(0.7F, 0.7F)
+                    .clientTrackingRange(8)
+                    .updateInterval(1)
+                    .build("mechanical_hook_claw"));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<GearGiantCoreBlockEntity>> GEAR_CORE =
             BLOCK_ENTITY_TYPES.register("gear_giant_core",
