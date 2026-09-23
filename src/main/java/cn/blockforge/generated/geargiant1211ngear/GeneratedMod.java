@@ -45,6 +45,7 @@ public final class GeneratedMod {
             modBus.addListener(ModClientEvents::registerLayerDefinitions);
             modBus.addListener(ModClientEvents::registerAdditionalModels);
             modBus.addListener(ModClientEvents::registerScreens);
+            modBus.addListener(ModClientEvents::registerItemProperties);
             NeoForge.EVENT_BUS.addListener(BossMusicHandler::onClientTick);
             NeoForge.EVENT_BUS.addListener(MechanicalHookHud::onRenderGuiLayerPre);
             NeoForge.EVENT_BUS.addListener(MechanicalHookHud::onRenderGuiPost);

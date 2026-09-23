@@ -9,10 +9,13 @@ import cn.blockforge.generated.geargiant1211ngear.client.renderer.HookClawRender
 import cn.blockforge.generated.geargiant1211ngear.client.renderer.MechanicalHookClawRenderer;
 import cn.blockforge.generated.geargiant1211ngear.client.screen.BrassGearChestScreen;
 import cn.blockforge.generated.geargiant1211ngear.registry.ModEntities;
+import cn.blockforge.generated.geargiant1211ngear.registry.ModItems;
 import cn.blockforge.generated.geargiant1211ngear.registry.ModMenus;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
@@ -41,6 +44,19 @@ public final class ModClientEvents {
 
     public static void registerScreens(RegisterMenuScreensEvent event) {
         event.register(ModMenus.BRASS_GEAR_CHEST.get(), BrassGearChestScreen::new);
+    }
+
+    /**
+     * 机械化钩爪的"出爪"物品属性（{@code gear_giant:cast}）：长按右键瞄准时置 1，
+     * 物品模型随之切到 {@code mechanical_hook_cast}——原版钓鱼竿用的正是同一套 cast 变体思路。
+     * 于是第三人称下"抬手瞄准"与"垂手待机"是两个姿态，物品始终像一支握在手里的机械竿，
+     * 而不是一张平贴在手上的纸片。
+     */
+    public static void registerItemProperties(FMLClientSetupEvent event) {
+        event.enqueueWork(() -> ItemProperties.register(ModItems.MECHANICAL_HOOK.get(),
+                ResourceLocation.fromNamespaceAndPath(GeneratedMod.MOD_ID, "cast"),
+                (stack, level, holder, seed) -> holder != null && holder.isUsingItem()
+                        && holder.getUseItem() == stack ? 1.0F : 0.0F));
     }
 
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
